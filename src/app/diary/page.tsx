@@ -174,48 +174,53 @@ function DiaryContent() {
   };
 
   return (
-    <main className="min-h-screen bg-stone-100 p-5">
-      <div className="mx-auto w-full max-w-md bg-white rounded-3xl shadow-xl p-6">
-        <div className="relative mb-6 flex items-center justify-between">
-          <div>
-            {/* <p className="text-sm text-gray-500 mb-1">
-              {Number(month)}월 {Number(day)}일
-            </p> */}
+  <main className="min-h-screen bg-stone-100 p-5">
+    <div className="mx-auto w-full max-w-md bg-white rounded-3xl shadow-xl p-6">
 
-            <h1
-              className={`${nanumPen.className} text-[75px] leading-none mb-6`}
-            >
-              MAY {day}
-            </h1>
-          </div>
+      <div className="relative mb-6 flex items-center justify-between">
 
-          <div className="relative">
+        <h1 className={`${nanumPen.className} text-[90px] leading-none`}>
+          MAY {day}
+        </h1>
+
+        <div className="relative flex flex-col gap-2">
+
+          {isToday && (
             <button
-              onClick={() => setShowBackupMenu(!showBackupMenu)}
-              className="rounded-xl bg-stone-200 px-4 py-2 text-sm font-semibold"
+              onClick={saveDiary}
+              className="rounded-xl bg-black px-4 py-2 text-sm font-semibold text-white"
             >
-              저장 관리
+              저장하기
             </button>
+          )}
 
-            <a
-              href="/calendar"
-              className="mt-2 block rounded-xl bg-stone-200 px-4 py-2 text-center text-sm font-semibold"
-            >
-              달력 보기
-            </a>
-          </div>
+          <a
+            href="/calendar"
+            className="block rounded-xl bg-stone-200 px-4 py-2 text-center text-sm text-black font-semibold"
+          >
+            달력 보기
+          </a>
+
+          <button
+            onClick={() => setShowBackupMenu(!showBackupMenu)}
+            className="rounded-xl bg-stone-200 px-4 py-2 text-sm text-black font-semibold"
+          >
+            저장 관리
+          </button>
 
           {showBackupMenu && (
-            <div className="absolute right-0 top-16 z-10 w-52 rounded-2xl bg-white p-3 shadow-xl border border-gray-100">
+            <div className="absolute right-0 top-36 z-10 w-52 rounded-2xl border border-gray-100 bg-white p-3 shadow-xl">
+
               <button
                 onClick={backupDiary}
-                className="w-full rounded-xl bg-stone-800 py-3 text-sm font-semibold text-white mb-2"
+                className="mb-2 w-full rounded-xl bg-stone-800 py-3 text-sm font-semibold text-white"
               >
                 백업 파일 저장하기
               </button>
 
-              <label className="block w-full cursor-pointer rounded-xl bg-stone-100 py-3 text-center text-sm font-semibold">
+              <label className="block w-full cursor-pointer rounded-xl bg-stone-100 py-3 text-center text-sm text-black font-semibold">
                 백업 파일 불러오기
+
                 <input
                   type="file"
                   accept="application/json"
@@ -223,16 +228,23 @@ function DiaryContent() {
                   className="hidden"
                 />
               </label>
+
             </div>
           )}
         </div>
+      </div>
 
-        <div className="bg-stone-100 rounded-2xl p-5 mb-6">
-          <p className="text-sm text-gray-500 mb-2">오늘의 질문</p>
-          <p className="text-lg font-medium leading-relaxed text-center">
-            {questions[selectedKey] || "오늘 하루에서 가장 기억에 남는 일은?"}
-          </p>
-        </div>
+      <div className="bg-stone-100 rounded-2xl p-5 mb-6">
+
+        <p className="text-sm text-black mb-2">
+          오늘의 질문
+        </p>
+
+        <p className="text-lg font-medium leading-relaxed text-center text-black">
+          {questions[selectedKey] || "오늘 하루에서 가장 기억에 남는 일은?"}
+        </p>
+
+      </div>
 
         {!isToday && (
           <div className="mb-5 rounded-2xl bg-yellow-50 p-4 text-sm text-yellow-800">
