@@ -179,7 +179,7 @@ function DiaryContent() {
 
       <div className="relative mb-6 flex items-center justify-between">
 
-        <h1 className={`${nanumPen.className} text-[90px] leading-none`}>
+        <h1 className={`${nanumPen.className} text-[80px] leading-none`}>
           MAY {day}
         </h1>
 
@@ -274,7 +274,7 @@ function DiaryContent() {
             </div>
           ))}
         </div>
-
+{/* 
         {isToday && (
           <button
             onClick={saveDiary}
@@ -282,7 +282,7 @@ function DiaryContent() {
           >
             저장하기
           </button>
-        )}
+        )} */}
 
         {/* <a
           href="/calendar"
